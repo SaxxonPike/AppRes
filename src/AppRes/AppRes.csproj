@@ -6,4 +6,7 @@
   <ItemGroup>
     <ProjectReference Include="..\AppRes.Lib\AppRes.Lib.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.9.1" />
+  </ItemGroup>
 </Project>
