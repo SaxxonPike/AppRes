@@ -1,8 +1,4 @@
-using System.Linq;
-using System.Reflection;
 using AppRes.Application;
-using AppRes.Lib.Infrastructure;
-using AppRes.Lib.Processes;
 using Autofac;
 
 namespace AppRes
@@ -18,12 +14,7 @@ namespace AppRes
         private static IContainer BuildContainer()
         {
             var builder = new ContainerBuilder();
-
-            builder.RegisterAssemblyTypes(typeof(IApp).Assembly, typeof(IProcessFinder).Assembly)
-                .Where(t => t.GetCustomAttributes(typeof(ServiceAttribute)).Any())
-                .AsImplementedInterfaces()
-                .SingleInstance();
-
+            builder.RegisterModule<BootAutofacModule>();
             return builder.Build();
         }
     }
