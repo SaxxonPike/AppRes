@@ -6,5 +6,6 @@ namespace AppRes.Lib.Display
     {
         IDisplayDevice Get(int index);
         IEnumerable<IDisplayDevice> GetAll();
+        IDisplayDevice GetDesktop();
     }
 }

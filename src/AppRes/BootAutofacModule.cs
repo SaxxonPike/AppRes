@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using AppRes.Application;
@@ -16,6 +18,11 @@ namespace AppRes
                 .AsSelf()
                 .AsImplementedInterfaces()
                 .SingleInstance();
+
+            builder.Register(c => Console.Out)
+                .As<TextWriter>()
+                .SingleInstance();
+            
             base.Load(builder);
         }
     }

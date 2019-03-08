@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 using AppRes.Lib.Infrastructure;
 using AppRes.Lib.Native;
@@ -34,6 +35,11 @@ namespace AppRes.Lib.Display
                     yield break;
                 yield return dd;
             }
+        }
+
+        public IDisplayDevice GetDesktop()
+        {
+            return GetAll().First(d => d.IsPrimaryDesktop);
         }
     }
 }

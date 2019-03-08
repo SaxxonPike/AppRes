@@ -61,5 +61,9 @@ namespace AppRes.Lib.Display
 
         public string Name => _displayDevice.DeviceName;
         public int Index => _index;
+
+        public bool IsPrimaryDesktop =>
+            _displayDevice.StateFlags.HasFlag(DisplayDeviceStateFlags.PrimaryDevice |
+                                              DisplayDeviceStateFlags.AttachedToDesktop);
     }
 }

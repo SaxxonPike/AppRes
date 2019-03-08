@@ -7,5 +7,6 @@ namespace AppRes.Lib.Display
         Size Resolution { get; set; }
         string Name { get; }
         int Index { get; }
+        bool IsPrimaryDesktop { get; }
     }
 }
