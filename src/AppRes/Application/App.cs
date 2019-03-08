@@ -5,7 +5,6 @@ using System.Linq;
 using System.Threading;
 using AppRes.Lib.Display;
 using AppRes.Lib.Infrastructure;
-using AppRes.Lib.Native;
 using AppRes.Lib.Processes;
 
 namespace AppRes.Application
