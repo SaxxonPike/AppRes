@@ -9,7 +9,13 @@ namespace AppRes.Test.Testing
 {
     public abstract class BaseTestFixture
     {
-        private Lazy<Fixture> Fixture { get; } = new Lazy<Fixture>(() => new Fixture());
+        private Lazy<Fixture> Fixture { get; } = new Lazy<Fixture>(() =>
+        {
+            var fixture = new Fixture();
+            var customization = new SupportMutableValueTypesCustomization();
+            customization.Customize(fixture);
+            return fixture;
+        });
 
         [DebuggerStepThrough]
         protected Mock<T> Mock<T>(Action<Mock<T>> setup) where T : class

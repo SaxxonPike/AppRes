@@ -14,7 +14,12 @@ namespace AppRes.Test.Testing
         [SetUp]
         public void __SetUpSubject()
         {
-            _subject = new Lazy<T>(() => CreateService<T>());
+            _subject = new Lazy<T>(__CreateSubject);
+        }
+
+        protected virtual T __CreateSubject()
+        {
+            return CreateService<T>();
         }
 
         protected T Subject => _subject.Value;
@@ -33,9 +38,15 @@ namespace AppRes.Test.Testing
         private Lazy<AutoMock> AutoMock { get; set; }
 
         [DebuggerStepThrough]
+        protected Mock<T> MockService<T>() where T : class
+        {
+            return AutoMock.Value.Mock<T>();
+        }
+
+        [DebuggerStepThrough]
         protected Mock<T> MockService<T>(Action<Mock<T>> setup) where T : class
         {
-            var mock = AutoMock.Value.Mock<T>();
+            var mock = MockService<T>();
             setup(mock);
             return mock;
         }
