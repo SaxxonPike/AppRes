@@ -13,6 +13,8 @@ namespace AppRes.Test.Display
     {
         private DEVMODE _devModeIn;
         private DEVMODE _devModeOut;
+        private int _devIndex;
+        private DISPLAY_DEVICE _device;
 
         delegate void EnumDisplaySettingsCallback(string name, int mode, ref DEVMODE dm);
 
@@ -58,7 +60,9 @@ namespace AppRes.Test.Display
 
         protected override DisplayDevice __CreateSubject()
         {
-            return new DisplayDevice(MockService<IUser32>().Object, Create<int>(), Create<DISPLAY_DEVICE>());
+            _devIndex = Create<int>();
+            _device = Create<DISPLAY_DEVICE>();
+            return new DisplayDevice(MockService<IUser32>().Object, _devIndex, _device);
         }
 
         [Test]
@@ -85,6 +89,16 @@ namespace AppRes.Test.Display
             // Assert.
             _devModeIn.dmPelsWidth.Should().Be(expectedWidth);
             _devModeIn.dmPelsHeight.Should().Be(expectedHeight);
+        }
+
+        [Test]
+        public void Name_ShouldRetrieveDisplayName()
+        {
+            // Act.
+            var observed = Subject.Name;
+
+            // Assert.
+            observed.Should().Be(_device.DeviceName);
         }
     }
 }

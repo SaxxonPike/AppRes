@@ -13,6 +13,7 @@ namespace AppRes
         {
             builder.RegisterAssemblyTypes(typeof(IApp).Assembly, typeof(IProcessFinder).Assembly)
                 .Where(t => t.GetCustomAttributes(typeof(ServiceAttribute)).Any())
+                .AsSelf()
                 .AsImplementedInterfaces()
                 .SingleInstance();
             base.Load(builder);

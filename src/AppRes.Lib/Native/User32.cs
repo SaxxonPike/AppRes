@@ -1,10 +1,12 @@
 using System;
 using System.Runtime.InteropServices;
+using AppRes.Lib.Infrastructure;
 
 // ReSharper disable All
 
 namespace AppRes.Lib.Native
 {
+    [Service]
     public class User32 : IUser32
     {
         [DllImport("user32.dll")]

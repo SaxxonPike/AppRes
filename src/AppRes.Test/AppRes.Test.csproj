@@ -16,7 +16,4 @@
     <ProjectReference Include="..\AppRes.Lib\AppRes.Lib.csproj" />
     <ProjectReference Include="..\AppRes\AppRes.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Integration" />
-  </ItemGroup>
 </Project>

@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using AppRes.Lib.Infrastructure;
 using AppRes.Lib.Native;
 
 namespace AppRes.Lib.Display
 {
+    [Service]
     public class DisplayDeviceFactory : IDisplayDeviceFactory
     {
         private readonly IUser32 _user32;
