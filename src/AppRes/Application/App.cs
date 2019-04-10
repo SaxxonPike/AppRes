@@ -28,7 +28,7 @@ namespace AppRes.Application
         
         public void Start(string[] args)
         {
-            var options = args.TakeWhile(a => a.StartsWith('/')).Select(a => a.ToLowerInvariant()).ToArray();
+            var options = args.TakeWhile(a => a.StartsWith("/")).Select(a => a.ToLowerInvariant()).ToArray();
             var effectiveArgs = args.Skip(options.Length).ToArray();
 
             // Show documentation if there aren't enough args.
